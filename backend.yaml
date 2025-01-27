@@ -50,7 +50,8 @@
       name: "{{item}}"
       executable: pip3.9
     loop:
-    - PyMySQL      
+    - PyMySQL 
+    - cryptography     
 
   - name: load data to database
     community.mysql.mysql_db:
