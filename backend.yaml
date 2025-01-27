@@ -53,9 +53,9 @@
     - PyMySQL 
     - cryptography     
 
-  - name: load data to database
+  - name: import mysql data
     community.mysql.mysql_db:
-      login_user: user
+      login_user: root
       login_password: ExpenseApp@1
       login_host: mysql.dpak.online
       name: all
