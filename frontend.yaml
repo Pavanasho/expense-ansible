@@ -12,3 +12,23 @@
       name: nginx
       enabled: yes
       state: started    
+
+  - name: delete default html directory
+    ansible.builtin.file:
+      src: /usr/share/nginx/html
+      state: absent    
+
+  - name: create html directory
+    ansible.builtin.file:
+      src: /usr/share/nginx/html
+      state: directory
+
+  - name: download app code
+    ansible.builtin.get_url:
+      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+      dest: /tmp/frontend.zip
+
+  - name: unzip the app code
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
